@@ -4,7 +4,7 @@ ENV PARENTDIR /var/tmp
 WORKDIR ${PARENTDIR}/h2o-${H2O_VERSION}
 RUN true \
   && apk --no-cache add \
-  curl=7.65.1-r0 \
+  curl=7.66.0-r0 \
   cmake=3.14.5-r0 \
   make=4.2.1-r2 \
   gcc=8.3.0-r0 \
@@ -14,7 +14,7 @@ RUN true \
   yaml-dev=0.2.2-r1 \
   libuv-dev=1.29.1-r0 \
   linux-headers=4.19.36-r0 \
-  openssl-dev=1.1.1c-r0 \
+  openssl-dev=1.1.1d-r0 \
   ruby=2.5.5-r0 \
   mruby-dev=1.4.1-r0
 RUN true \
@@ -28,7 +28,7 @@ RUN true \
   && apk --no-cache add \
   libstdc++=8.3.0-r0 \
   libgcc=8.3.0-r0 \
-  openssl=1.1.1c-r0
+  openssl=1.1.1d-r0
 COPY --from=build-env /srv/h2o /srv/h2o
 WORKDIR /srv/h2o/share/doc/h2o
 ENTRYPOINT [ "/srv/h2o/bin/h2o" ]
