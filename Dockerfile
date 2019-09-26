@@ -26,6 +26,7 @@ RUN true \
 FROM alpine:3.10
 RUN true \
   && apk --no-cache add \
+  perl=5.28.2-r1 \
   libstdc++=8.3.0-r0 \
   libgcc=8.3.0-r0 \
   openssl=1.1.1d-r0
