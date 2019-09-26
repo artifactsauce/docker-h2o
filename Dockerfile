@@ -2,7 +2,7 @@ FROM alpine:3.10 AS build-env
 ENV H2O_VERSION 2.2.6
 ENV PARENTDIR /var/tmp
 WORKDIR ${PARENTDIR}/h2o-${H2O_VERSION}
-RUN set -eux; \
+RUN set -eux \
   && apk --no-cache add \
   curl=7.66.0-r0 \
   cmake=3.14.5-r0 \
@@ -17,14 +17,14 @@ RUN set -eux; \
   openssl-dev=1.1.1d-r0 \
   ruby=2.5.5-r0 \
   mruby-dev=1.4.1-r0
-RUN set -eux; \
+RUN set -eux \
   && curl -sL https://github.com/h2o/h2o/archive/v${H2O_VERSION}.tar.gz -o ${PARENTDIR}/v${H2O_VERSION}.tar.gz \
   && tar zxvf ${PARENTDIR}/v${H2O_VERSION}.tar.gz -C ${PARENTDIR} \
   && cmake -DWITH_BUNDLED_SSL=on -DWITH_MRUBY=on -DCMAKE_INSTALL_PREFIX=/srv/h2o . \
   && make && make install
 
 FROM alpine:3.10
-RUN set -eux; \
+RUN set -eux \
   && apk --no-cache add \
   perl=5.28.2-r1 \
   libstdc++=8.3.0-r0 \
